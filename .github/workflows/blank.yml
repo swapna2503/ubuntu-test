@@ -9,4 +9,6 @@ jobs:
       with:
        key: ${{ secrets.SSH_PRIVATE_KEY }}
        known_hosts: unnecessary
+       script: |
+         whoami
        
