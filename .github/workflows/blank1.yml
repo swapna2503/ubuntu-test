@@ -6,12 +6,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v0.1.8
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
       with:
-        #host: ${{ secrets.HOST }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        #port: ${{ secrets.PORT }}
-        script: whoami
+       key: ${{ secrets.SSH_PRIVATE_KEY }}
+       known_hosts: unnecessary
+       script: whoami
         
         
