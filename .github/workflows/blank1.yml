@@ -10,7 +10,7 @@ jobs:
       uses: appleboy/ssh-action@v0.1.8
       with:
         #host: ${{ secrets.HOST }}
-        key: ${{ secrets.UBUNTUKEY1 }}
+        key: ${{ secrets.SSH_PRIVATEKEY }}
         #port: ${{ secrets.PORT }}
         script: whoami
         
