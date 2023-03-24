@@ -7,13 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ls -a via OPEN SSH Private Key
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: ls -a
-          host: ${{ secrets.SSH_HOST }}
-          username: garygrossgarten
-          #password: ${{ secrets.PASSPHRASE }}
-          privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
-        env:
-          CI: true
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+       key: ${{ secrets.SSH_PRIVATE_KEY }}
+       known_hosts: unnecessary
