@@ -12,4 +12,5 @@ jobs:
       with:
        key: ${{ secrets.PRIVATEKEY }}
        known_hosts: ${{ secrets.SSHPRIVATEKEY }}
-    - run: whoami
+    - name: Pull
+      run: whoami
