@@ -1,16 +1,19 @@
-name: remote ssh command
-on: [push]
-jobs:
+name: Command via SSH
 
+on: push
+
+jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
+
     steps:
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-       key: ${{ secrets.SSH_PRIVATE_KEY }}
-       known_hosts: unnecessary
-       run: whoami
-        
-        
+      - name: ls -a via OPEN SSH Private Key
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: ls -a
+          host: ${{ secrets.SSH_HOST }}
+          username: garygrossgarten
+          #password: ${{ secrets.PASSPHRASE }}
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY}}
+        env:
+          CI: true
